@@ -3,9 +3,17 @@ const button = document.querySelector('.search-container>button');
 // console.log(input);
 // console.log(button);
 
+// TODO: get user input for location
 button.addEventListener('click', () => { 
     if(input.value){
         console.log(input.value);
     }
  })
+
+// TODO: fetch weather data with weather API
+
+// TODO: fetch gif data with gifpy API
+
+// TODO: loading component with gifpy API
+
 
