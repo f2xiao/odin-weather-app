@@ -16,7 +16,7 @@ function insertIcon(url, element){
     img.alt = 'current weather';
     element.appendChild(img);
 }
-// TODO: get user input for location
+// get user input for location
 button.addEventListener('click', async () => { 
     if(input.value){
         // input.value = London|Shanghai|Toronto|Beijing|Seattle|California;
@@ -25,11 +25,12 @@ button.addEventListener('click', async () => {
 
         try {
 
+            // fetch weather data with weather API
             const weatherData = await getWeather(WEATHER.API_KEY, WEATHER.BASE_URL, input.value);
             console.log(weatherData);
             const condition = weatherData.condition;
         
-    
+            // fetch gif data with gifpy API
             // const gifData = await getGif(GIFHY.API_KEY, GIFHY.BASE_URL, `weather ${condition.text}`);
             const gifData = await getGif(GIFHY.API_KEY, GIFHY.BASE_URL, `weather: freezing drizzle`);
             console.log(gifData);
@@ -47,9 +48,6 @@ button.addEventListener('click', async () => {
 
     }
  })
-// TODO: fetch weather data with weather API
-
-// TODO: fetch gif data with gifpy API
 
 // TODO: loading component with gifpy API
 
