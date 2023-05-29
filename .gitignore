@@ -1,3 +1,5 @@
+# API keys
+config.json
 # Logs
 logs
 *.log
