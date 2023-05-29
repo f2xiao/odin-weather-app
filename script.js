@@ -1,3 +1,4 @@
+import getWeather from "./getWeather.js";
 const input = document.querySelector('.search-container>input');
 const button = document.querySelector('.search-container>button');
 // console.log(input);
@@ -11,7 +12,7 @@ button.addEventListener('click', () => {
  })
 
 // TODO: fetch weather data with weather API
-
+getWeather();
 // TODO: fetch gif data with gifpy API
 
 // TODO: loading component with gifpy API
