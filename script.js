@@ -32,6 +32,7 @@ button.addEventListener('click', async () => {
         
             // fetch gif data with gifpy API
             // const gifData = await getGif(GIFHY.API_KEY, GIFHY.BASE_URL, `weather ${condition.text}`);
+            // FIXME: optimize getGif so only weather related gif is returned
             const gifData = await getGif(GIFHY.API_KEY, GIFHY.BASE_URL, `weather: freezing drizzle`);
             console.log(gifData);
             p.textContent = condition.text;
