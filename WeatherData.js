@@ -46,10 +46,8 @@ async function fetchWeather(city="Waterloo") {
     
 }
 
-function addButtonClickHandler(shadow){
-    const button = shadow.querySelector(".search-container>button");
-    const input = shadow.querySelector(".search-container>input");
-
+function addButtonClickHandler(elem){
+    const {button, input} = elem
     // get user input for location
     button.addEventListener('click', async (e) => { 
         e.preventDefault();
@@ -80,16 +78,21 @@ function renderData(shadow, data){
 export default class WeatherData extends HTMLElement{
     constructor(){
         super();
-    
 
         const shadowRoot = this.attachShadow({mode:"open"});
         // append a copy of the template node to the element's shadow root
         shadowRoot.appendChild(template.content.cloneNode(true)); 
 
+        this.button = shadowRoot.querySelector(".search-container>button");
+        this.input = shadowRoot.querySelector(".search-container>input")
+       
     }
 
     connectedCallback(){
-       addButtonClickHandler(this.shadowRoot);
+       addButtonClickHandler(this);
+       this.input.value = 'Waterloo';
+       this.button.click()
+       this.input.value = ''; 
     } 
 
 }
