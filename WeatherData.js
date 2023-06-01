@@ -69,13 +69,12 @@ function renderData(shadow, data){
     // clear the description first
     descriptionEle.textContent = '';
     const {condition, temp} = data;
-    for (const key in condition) {
-        if (Object.hasOwnProperty.call(condition, key)) {
-            const p = document.createElement('p');
-            p.textContent = condition[key];
-            descriptionEle.appendChild(p);
-        }
-    }
+
+    descriptionEle.innerHTML = `
+    <h1 class='text'>${condition.text}</h1>
+    <p class='location'>${condition.location}</p>
+    <p class='time'>${condition.time}</p>
+    `
 }
 
 export default class WeatherData extends HTMLElement{
