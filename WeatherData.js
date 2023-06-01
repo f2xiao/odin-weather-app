@@ -5,8 +5,8 @@ import getWeather from "./getWeather.js";
 const template = document.createElement('template');
 template.innerHTML = `
 <div id="weather-container">
-    <p class="weather-description">
-    </p>
+    <div class="weather-description">
+    </div>
     <div class="search-container">
         <input type="search" name="location" id="location" placeholder="Search for weather">
         <button type="submit">GO</button>
@@ -65,8 +65,17 @@ function addButtonClickHandler(shadow){
 }
 
 function renderData(shadow, data){
-    const pEle=shadow.querySelector(".weather-description");
-    pEle.textContent = data.condition.text;
+    const descriptionEle=shadow.querySelector(".weather-description");
+    // clear the description first
+    descriptionEle.textContent = '';
+    const {condition, temp} = data;
+    for (const key in condition) {
+        if (Object.hasOwnProperty.call(condition, key)) {
+            const p = document.createElement('p');
+            p.textContent = condition[key];
+            descriptionEle.appendChild(p);
+        }
+    }
 }
 
 export default class WeatherData extends HTMLElement{
@@ -85,9 +94,6 @@ export default class WeatherData extends HTMLElement{
     } 
 
 }
-
-
-
 
 
 // register with the DOM
