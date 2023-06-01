@@ -47,7 +47,7 @@ async function fetchWeather(city="Waterloo") {
 }
 
 function addButtonClickHandler(elem){
-    const {button, input} = elem
+    const {button, input} = elem;
     // get user input for location
     button.addEventListener('click', async (e) => { 
         e.preventDefault();
@@ -56,14 +56,14 @@ function addButtonClickHandler(elem){
             // input.value = Waterloo|Auckland|London|Shanghai|Toronto|Beijing|Seattle|California;
             const city = input.value;
             const data = await fetchWeather(city);
-            console.log(data)
-            renderData(shadow, data);
+            // console.log(data)
+            renderData(elem, data);
         }
      })
 }
 
-function renderData(shadow, data){
-    const descriptionEle=shadow.querySelector(".weather-description");
+function renderData(elem, data){
+    const descriptionEle = elem.descriptionEle;
     // clear the description first
     descriptionEle.textContent = '';
     const {condition, temp} = data;
@@ -84,7 +84,8 @@ export default class WeatherData extends HTMLElement{
         shadowRoot.appendChild(template.content.cloneNode(true)); 
 
         this.button = shadowRoot.querySelector(".search-container>button");
-        this.input = shadowRoot.querySelector(".search-container>input")
+        this.input = shadowRoot.querySelector(".search-container>input");
+        this.descriptionEle = shadowRoot.querySelector(".weather-description");
        
     }
 

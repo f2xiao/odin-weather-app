@@ -8,7 +8,7 @@ export default async function(API_KEY, BASE_URL, cityName){
     // console.log(url);
 
     const weather = (await fetchData(url));
-    console.log(weather);
+    // console.log(weather);
 
     return weather;
 
