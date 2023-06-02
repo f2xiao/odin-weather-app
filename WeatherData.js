@@ -59,7 +59,7 @@ function addButtonClickHandler(elem){
             // console.log(data)
             renderData(elem, data);
         }
-     })
+     });
 }
 
 function renderData(elem, data){
@@ -91,9 +91,6 @@ export default class WeatherData extends HTMLElement{
 
     connectedCallback(){
        addButtonClickHandler(this);
-       this.input.value = 'Waterloo';
-       this.button.click()
-       this.input.value = ''; 
     } 
 
 }
